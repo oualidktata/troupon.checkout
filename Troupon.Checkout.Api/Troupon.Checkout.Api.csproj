@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>21a76ca1-511f-4e97-9403-53c77e74c680</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <PackageId>Troupon.Checkout.Api</PackageId>
   </PropertyGroup>
 
