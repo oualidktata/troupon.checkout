@@ -1,23 +1,17 @@
-﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Core.Domain.Dtos;
+using Swashbuckle.AspNetCore.Annotations;
+using Troupon.Checkout.Api.Conventions;
+using Troupon.Checkout.Core.Application.DTOs;
 
 namespace Troupon.Checkout.Api.Controllers
 {
   [ApiController]
-  [Route("api/[controller]")]
-  [Produces(
-    "application/json",
-    "application/xml")]
-  [Consumes(
-    "application/json",
-    "application/xml")]
+  [Route("api/v{version:apiVersion}/[controller]")]
+  [ApiVersion("1.0")]
+  [ApiConventionType(typeof(PwcApiConventions))]
   public class OrderController : BaseController
   {
     public OrderController(
@@ -28,29 +22,31 @@ namespace Troupon.Checkout.Api.Controllers
     {
     }
 
+    [SwaggerOperation(
+     Description = "Place a new order",
+     OperationId = "place-order")]
     [HttpPost]
-    public async Task<ActionResult<OrderDto>> Post(
-      [FromBody] PlaceOrderCommand model,
-      CancellationToken cancellationToken)
+    public Task<OrderPlacedDto> Post([FromBody] PlaceOrderAsGuestDto model)
     {
-      try
-      {
-        var result = await Mediator.Send<OrderDto>(
-          model,
-          cancellationToken);
+      return Task.FromResult(new OrderPlacedDto());
+      //try
+      //{
+      //  var result = await Mediator.Send(
+      //    model,
+      //    cancellationToken);
 
-        return CreatedAtAction(
-          nameof(Post),
-          new {id = result.Id},
-          result);
-      }
-      catch (Exception exception)
-      {
-        return await Task.FromResult(
-          StatusCode(
-            StatusCodes.Status500InternalServerError,
-            exception));
-      }
+      //  return CreatedAtAction(
+      //    nameof(Post),
+      //    new {id = result.Id},
+      //    result);
+      //}
+      //catch (Exception exception)
+      //{
+      //  return await Task.FromResult(
+      //    StatusCode(
+      //      StatusCodes.Status500InternalServerError,
+      //      exception));
+      //}
     }
   }
 }

@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using AutoMapper;
 using Infra.MediatR.Events;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Troupon.Checkout.Core.Application.Events;
 
 namespace Troupon.Checkout.Api.Controllers
-{
-  // [Authorize]
+{  
   [ApiController]
   [ApplicationExceptionFilter]
   [Route("api/[controller]")]
