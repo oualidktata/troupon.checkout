@@ -8,13 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrderService
+namespace PaymentService
 {
     public class Startup
     {
@@ -32,17 +31,22 @@ namespace OrderService
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OrderService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentService", Version = "v1" });
             });
             services.AddMassTransit(config =>
             {
+              config.AddConsumer<OrderConsumer>();
               config.UsingRabbitMq((ctx, cfg) =>
               {
                 cfg.Host("amqp://guest:guest@localhost:5672");
+                cfg.ReceiveEndpoint("payment-queue", c =>
+                {
+                  c.ConfigureConsumer<OrderConsumer>(ctx);
+                });
               });
             });
             services.AddMassTransitHostedService();
-        }
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,7 +55,7 @@ namespace OrderService
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OrderService v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PaymentService v1"));
             }
 
             app.UseHttpsRedirection();
@@ -64,23 +68,6 @@ namespace OrderService
             {
                 endpoints.MapControllers();
             });
-
-            //var bus = Bus.Factory.CreateUsingRabbitMq(config =>
-            //{
-            //  config.Host("amqp://guest:guest@localhost:5672");
-
-            //  config.ReceiveEndpoint("order-queue", c =>
-            //  {
-            //    c.Handler<Order>(ctx =>
-            //    {
-            //      return Console.Out.WriteLineAsync(ctx.Message.Name);
-            //    });
-            //  });
-            //});
-
-            //bus.Start();
-
-            //bus.Publish(new Order { Name = "Order Name" });
         }
     }
 }
