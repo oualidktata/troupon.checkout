@@ -28,25 +28,7 @@ namespace Troupon.Checkout.Api.Controllers
     [HttpPost]
     public Task<OrderPlacedDto> Post([FromBody] PlaceOrderAsGuestDto model)
     {
-      return Task.FromResult(new OrderPlacedDto());
-      //try
-      //{
-      //  var result = await Mediator.Send(
-      //    model,
-      //    cancellationToken);
-
-      //  return CreatedAtAction(
-      //    nameof(Post),
-      //    new {id = result.Id},
-      //    result);
-      //}
-      //catch (Exception exception)
-      //{
-      //  return await Task.FromResult(
-      //    StatusCode(
-      //      StatusCodes.Status500InternalServerError,
-      //      exception));
-      //}
+      return Task.FromResult(new OrderPlacedDto());      
     }
   }
 }

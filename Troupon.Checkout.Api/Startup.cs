@@ -1,23 +1,16 @@
 using System.Reflection;
-using System.Text.Json;
-using System.Threading.Tasks;
-using HealthChecks.UI.Client;
 using Infra.oAuthService;
 using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
 using Troupon.Checkout.Api.DependencyInjectionExtensions;
-using Troupon.Checkout.Core.Application;
 using Troupon.Checkout.Infra.Persistence;
 
 namespace Troupon.Checkout.Api
@@ -84,24 +77,12 @@ namespace Troupon.Checkout.Api
       IApiVersionDescriptionProvider apiVersionDescriptionProvider,
       IWebHostEnvironment env,
       IDbContextFactory<CheckoutDbContext> dbContextFactory)
-    {
-      //if (env.IsDevelopment())
-      //{
-      //    app.UseDeveloperExceptionPage();
-      //}
+    {      
       app.UseExceptionHandler("/error");
 
       app.UseHttpsRedirection();
       app.UseSerilogRequestLogging();
-
-      // app.UsePathBase("/graphql");
-
-      //catalogDbContext.Database.EnsureDeleted();
-      //var catalogDbContext = dbContextFactory.CreateDbContext();
-      //catalogDbContext.Database.Migrate();
-
-      // app.UsePlayground();
-
+     
       app.UseSwagger();      
       app.UseSwaggerUI(
         c =>
