@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrderService
+namespace Troupon.Api.Shipment
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace OrderService
+namespace Troupon.Api.Shipment
 {
     public class WeatherForecast
     {

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\Shared\Model\Troupon.Shared.Model.csproj" />
   </ItemGroup>
 
 </Project>
