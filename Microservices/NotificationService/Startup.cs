@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentService
+namespace NotificationService
 {
     public class Startup
     {
@@ -31,25 +31,17 @@ namespace PaymentService
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotificationService", Version = "v1" });
             });
-            //services.AddMassTransit(config =>
-            //{
-            //  config.UsingRabbitMq((ctx, cfg) =>
-            //  {
-            //    cfg.Host("amqp://guest:guest@localhost:5672");
-            //  });
-            //});
-            //services.AddMassTransitHostedService();
             services.AddMassTransit(config =>
             {
-              config.AddConsumer<OrderConsumer>();
+              config.AddConsumer<PaymentConsumer>();
               config.UsingRabbitMq((ctx, cfg) =>
               {
                 cfg.Host("amqp://guest:guest@localhost:5672");
-                cfg.ReceiveEndpoint("payment-queue", c =>
+                cfg.ReceiveEndpoint("notification-queue", c =>
                 {
-                  c.ConfigureConsumer<OrderConsumer>(ctx);
+                  c.ConfigureConsumer<PaymentConsumer>(ctx);
                 });
               });
             });
@@ -63,7 +55,7 @@ namespace PaymentService
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PaymentService v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NotificationService v1"));
             }
 
             app.UseHttpsRedirection();
