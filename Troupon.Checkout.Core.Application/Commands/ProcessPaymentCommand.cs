@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace Troupon.Checkout.Core.Application.Commands
+namespace Troupon.Core.Application.Ordering.Commands
 {
   public class ProcessPaymentCommand : IRequest<Unit>
   {

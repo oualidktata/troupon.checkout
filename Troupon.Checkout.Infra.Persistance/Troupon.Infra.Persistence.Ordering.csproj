@@ -29,7 +29,7 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\Troupon.Checkout.Core.Domain\Troupon.Checkout.Core.Domain.csproj" />
+        <ProjectReference Include="..\Troupon.Checkout.Core.Domain\Troupon.Core.Domain.Ordering.csproj" />
     </ItemGroup>
 
 </Project>

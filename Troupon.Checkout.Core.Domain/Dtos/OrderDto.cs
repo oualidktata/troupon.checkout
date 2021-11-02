@@ -1,7 +1,7 @@
-﻿using System;
-using Troupon.Checkout.Core.Domain.Enums;
+using System;
+using Troupon.Core.Domain.Ordering.Enums;
 
-namespace Troupon.Checkout.Core.Domain.Dtos
+namespace Troupon.Core.Domain.Ordering.Dtos
 {
   public class OrderDto
   {

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Troupon.Checkout.Api.DependencyInjectionExtensions;
-using Troupon.Checkout.Infra.Persistence;
+using Troupon.Infra.Persistence.Ordering;
 
 namespace Troupon.Checkout.Api
 {

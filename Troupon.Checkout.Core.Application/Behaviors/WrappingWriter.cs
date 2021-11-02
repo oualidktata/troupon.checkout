@@ -1,8 +1,8 @@
-﻿using System.IO;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Troupon.Checkout.Core.Application.Behaviors
+namespace Troupon.Core.Application.Ordering.Behaviors
 {
   public class WrappingWriter : TextWriter
   {

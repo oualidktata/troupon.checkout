@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using Troupon.Checkout.Core.Domain.Dtos;
-using Troupon.Checkout.Core.Domain.Entities.Order;
+using AutoMapper;
+using Troupon.Core.Domain.Ordering.Dtos;
+using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Checkout.Infra.Persistence
+namespace Troupon.Infra.Persistence.Ordering
 {
   public class AutomapperProfile : Profile
   {

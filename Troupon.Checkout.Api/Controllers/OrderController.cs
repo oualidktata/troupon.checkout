@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Troupon.Checkout.Api.Conventions;
-using Troupon.Checkout.Core.Application.DTOs;
+using Troupon.Core.Application.Ordering.DTOs;
 
 namespace Troupon.Checkout.Api.Controllers
 {

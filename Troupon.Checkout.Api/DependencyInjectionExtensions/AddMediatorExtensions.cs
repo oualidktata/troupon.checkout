@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using Infra.MediatR.Caching.Extensions;
 using Infra.MediatR.Logging.Extensions;
 using Infra.MediatR.Validation.Extensions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Troupon.Checkout.Core.Application.Behaviors;
-using Troupon.Checkout.Core.Application.Events;
+using Troupon.Core.Application.Ordering.Behaviors;
+using Troupon.Core.Application.Ordering.Events;
 
 namespace Troupon.Checkout.Api.DependencyInjectionExtensions
 {

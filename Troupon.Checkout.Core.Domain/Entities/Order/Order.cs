@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Infra.DomainDrivenDesign.Base;
-using Troupon.Checkout.Core.Domain.Entities.Common;
-using Troupon.Checkout.Core.Domain.Enums;
+using Troupon.Core.Domain.Ordering.Entities.Common;
+using Troupon.Core.Domain.Ordering.Enums;
 
-namespace Troupon.Checkout.Core.Domain.Entities.Order
+namespace Troupon.Core.Domain.Ordering.Entities.Order
 {
   public class Order : AggregateRoot
   {

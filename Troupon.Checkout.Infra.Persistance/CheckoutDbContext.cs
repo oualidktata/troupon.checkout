@@ -1,10 +1,10 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Troupon.Checkout.Core.Domain.Entities.Common;
-using Troupon.Checkout.Core.Domain.Entities.Customer;
-using Troupon.Checkout.Core.Domain.Entities.Order;
+using Troupon.Core.Domain.Ordering.Entities.Common;
+using Troupon.Core.Domain.Ordering.Entities.Customer;
+using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Checkout.Infra.Persistence
+namespace Troupon.Infra.Persistence.Ordering
 {
   public class CheckoutDbContext : DbContext
   {

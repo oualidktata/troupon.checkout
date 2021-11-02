@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Infra.MediatR.Events;
 using Infra.Persistence.Repositories;
 using MediatR;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Core.Application.Events;
-using Troupon.Checkout.Core.Domain.Entities.Order;
+using Troupon.Core.Application.Ordering.Commands;
+using Troupon.Core.Application.Ordering.Events;
+using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Checkout.Core.Application.Handlers.Commands
+namespace Troupon.Core.Application.Ordering.Handlers.Commands
 {
   public class ValidateOrderCommandHandler : IRequestHandler<ValidateOrderCommand, bool>
   {

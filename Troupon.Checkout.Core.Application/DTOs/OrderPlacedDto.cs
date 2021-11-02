@@ -1,6 +1,6 @@
 using System;
 
-namespace Troupon.Checkout.Core.Application.DTOs
+namespace Troupon.Core.Application.Ordering.DTOs
 {
   public class OrderPlacedDto
   {

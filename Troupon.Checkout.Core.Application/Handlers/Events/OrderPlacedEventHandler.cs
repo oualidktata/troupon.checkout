@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Core.Application.Events;
+using Troupon.Core.Application.Ordering.Commands;
+using Troupon.Core.Application.Ordering.Events;
 
-namespace Troupon.Checkout.Core.Application.Handlers.Events
+namespace Troupon.Core.Application.Ordering.Handlers.Events
 {
   public class OrderPlacedEventHandler : INotificationHandler<OrderPlacedEvent>
   {

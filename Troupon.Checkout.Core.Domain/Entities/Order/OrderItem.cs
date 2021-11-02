@@ -1,8 +1,8 @@
 ﻿using System;
 using Infra.DomainDrivenDesign.Base;
-using Troupon.Checkout.Core.Domain.Entities.Common;
+using Troupon.Core.Domain.Ordering.Entities.Common;
 
-namespace Troupon.Checkout.Core.Domain.Entities.Order
+namespace Troupon.Core.Domain.Ordering.Entities.Order
 {
   public class OrderItem : Entity
   {

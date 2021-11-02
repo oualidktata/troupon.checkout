@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Troupon.Checkout.Infra.Persistence;
+using Troupon.Infra.Persistence.Ordering;
 
 namespace Troupon.Checkout.Api.Migrations
 {
@@ -20,7 +20,7 @@ namespace Troupon.Checkout.Api.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Common.Address", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Common.Address", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace Troupon.Checkout.Api.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Common.Price", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Common.Price", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,7 @@ namespace Troupon.Checkout.Api.Migrations
                     b.ToTable("Prices");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Customer.Customer", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Customer.Customer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace Troupon.Checkout.Api.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Order.Order", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Order.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,7 +115,7 @@ namespace Troupon.Checkout.Api.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Order.OrderItem", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Order.OrderItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,7 @@ namespace Troupon.Checkout.Api.Migrations
                     b.ToTable("Currency");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Common.Price", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Common.Price", b =>
                 {
                     b.HasOne("Troupon.DealManagement.Core.Domain.Entities.Common.Currency", "Currency")
                         .WithMany()
@@ -168,13 +168,13 @@ namespace Troupon.Checkout.Api.Migrations
                     b.Navigation("Currency");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Order.Order", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Order.Order", b =>
                 {
-                    b.HasOne("Troupon.Checkout.Core.Domain.Entities.Customer.Customer", "Customer")
+                    b.HasOne("Troupon.Core.Domain.Ordering.Entities.Customer.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("Troupon.Checkout.Core.Domain.Entities.Common.Address", "ShippingAddress")
+                    b.HasOne("Troupon.Core.Domain.Ordering.Entities.Common.Address", "ShippingAddress")
                         .WithMany()
                         .HasForeignKey("ShippingAddressId");
 
@@ -183,20 +183,20 @@ namespace Troupon.Checkout.Api.Migrations
                     b.Navigation("ShippingAddress");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Order.OrderItem", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Order.OrderItem", b =>
                 {
-                    b.HasOne("Troupon.Checkout.Core.Domain.Entities.Order.Order", null)
+                    b.HasOne("Troupon.Core.Domain.Ordering.Entities.Order.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("Troupon.Checkout.Core.Domain.Entities.Common.Price", "Price")
+                    b.HasOne("Troupon.Core.Domain.Ordering.Entities.Common.Price", "Price")
                         .WithMany()
                         .HasForeignKey("PriceId");
 
                     b.Navigation("Price");
                 });
 
-            modelBuilder.Entity("Troupon.Checkout.Core.Domain.Entities.Order.Order", b =>
+            modelBuilder.Entity("Troupon.Core.Domain.Ordering.Entities.Order.Order", b =>
                 {
                     b.Navigation("OrderItems");
                 });

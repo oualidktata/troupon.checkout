@@ -1,4 +1,4 @@
-﻿namespace Troupon.Checkout.Core.Domain.Enums
+﻿namespace Troupon.Core.Domain.Ordering.Enums
 {
   public enum OrderStatus
   {

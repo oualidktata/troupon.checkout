@@ -1,6 +1,6 @@
 ﻿using Infra.DomainDrivenDesign.Base;
 
-namespace Troupon.Checkout.Core.Domain.Entities.Customer
+namespace Troupon.Core.Domain.Ordering.Entities.Customer
 {
   public class Customer : AggregateRoot
   {

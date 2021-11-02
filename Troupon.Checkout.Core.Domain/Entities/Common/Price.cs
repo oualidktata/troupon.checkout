@@ -2,7 +2,7 @@
 using Infra.DomainDrivenDesign.Base;
 using Troupon.DealManagement.Core.Domain.Entities.Common;
 
-namespace Troupon.Checkout.Core.Domain.Entities.Common
+namespace Troupon.Core.Domain.Ordering.Entities.Common
 {
   public class Price : ValueObject
   {

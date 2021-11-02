@@ -2,7 +2,7 @@
 using Infra.DomainDrivenDesign.Base;
 using MediatR;
 
-namespace Troupon.Checkout.Core.Application.Events
+namespace Troupon.Core.Application.Ordering.Events
 {
   public class OrderPlacedEvent : INotification,
     IDomainEvent

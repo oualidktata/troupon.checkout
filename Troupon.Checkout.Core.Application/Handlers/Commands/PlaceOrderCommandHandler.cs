@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Infra.Persistence.Repositories;
 using MediatR;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Core.Domain.Dtos;
-using Troupon.Checkout.Core.Domain.Entities.Order;
+using Troupon.Core.Application.Ordering.Commands;
+using Troupon.Core.Domain.Ordering.Dtos;
+using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Checkout.Core.Application.Handlers.Commands
+namespace Troupon.Core.Application.Ordering.Handlers.Commands
 {
   public class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderCommand, OrderDto>
   {

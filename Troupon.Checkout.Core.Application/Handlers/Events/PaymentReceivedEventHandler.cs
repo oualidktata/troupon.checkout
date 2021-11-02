@@ -3,10 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Infra.Persistence.Repositories;
 using MediatR;
-using Troupon.Checkout.Core.Application.Events;
-using Troupon.Checkout.Core.Domain.Entities.Order;
+using Troupon.Core.Application.Ordering.Events;
+using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Checkout.Core.Application.Handlers.Events
+namespace Troupon.Core.Application.Ordering.Handlers.Events
 {
   public class PaymentReceivedEventHandler : INotificationHandler<PaymentReceivedEvent>
   {

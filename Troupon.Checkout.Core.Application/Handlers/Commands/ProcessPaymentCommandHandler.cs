@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Infra.MediatR.Events;
 using MediatR;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Core.Application.Events;
+using Troupon.Core.Application.Ordering.Commands;
+using Troupon.Core.Application.Ordering.Events;
 
-namespace Troupon.Checkout.Core.Application.Handlers.Commands
+namespace Troupon.Core.Application.Ordering.Handlers.Commands
 {
   public class ProcessPaymentCommandHandler : IRequestHandler<ProcessPaymentCommand, Unit>
   {

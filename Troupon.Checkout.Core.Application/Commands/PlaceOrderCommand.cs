@@ -1,8 +1,8 @@
 using System;
 using MediatR;
-using Troupon.Checkout.Core.Domain.Dtos;
+using Troupon.Core.Domain.Ordering.Dtos;
 
-namespace Troupon.Checkout.Core.Application.Commands
+namespace Troupon.Core.Application.Ordering.Commands
 {
   public class PlaceOrderCommand : IRequest<OrderDto>
   {

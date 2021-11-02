@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Infra.DomainDrivenDesign.Base;
 
-namespace Troupon.Checkout.Core.Domain.Entities.Common
+namespace Troupon.Core.Domain.Ordering.Entities.Common
 {
   public class Address : ValueObject
   {
