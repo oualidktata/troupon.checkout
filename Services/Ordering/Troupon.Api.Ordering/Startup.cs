@@ -10,10 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Troupon.Checkout.Api.DependencyInjectionExtensions;
+using Troupon.Api.Ordering.DependencyInjectionExtensions;
 using Troupon.Infra.Persistence.Ordering;
 
-namespace Troupon.Checkout.Api
+namespace Troupon.Api.Ordering
 {
   public class Startup
   {

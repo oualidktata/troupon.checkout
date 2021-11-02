@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Troupon.Checkout.Api.Authentication
+namespace Troupon.Api.Ordering.Authentication
 {
   public class KeyCloackAuthenticationHandler : AuthenticationHandler<TokenAuthenticationOptions>
   {

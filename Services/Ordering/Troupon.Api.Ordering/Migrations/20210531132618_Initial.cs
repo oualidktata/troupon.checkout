@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Troupon.Checkout.Api.Migrations
+namespace Troupon.Api.Ordering.Migrations
 {
     public partial class Initial : Migration
     {

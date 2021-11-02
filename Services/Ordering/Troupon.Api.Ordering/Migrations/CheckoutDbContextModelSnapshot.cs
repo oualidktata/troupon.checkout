@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Troupon.Infra.Persistence.Ordering;
 
-namespace Troupon.Checkout.Api.Migrations
+namespace Troupon.Api.Ordering.Migrations
 {
     [DbContext(typeof(CheckoutDbContext))]
     partial class CheckoutDbContextModelSnapshot : ModelSnapshot

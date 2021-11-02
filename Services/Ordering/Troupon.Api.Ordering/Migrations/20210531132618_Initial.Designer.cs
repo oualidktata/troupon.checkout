@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Troupon.Infra.Persistence.Ordering;
 
-namespace Troupon.Checkout.Api.Migrations
+namespace Troupon.Api.Ordering.Migrations
 {
     [DbContext(typeof(CheckoutDbContext))]
     [Migration("20210531132618_Initial")]

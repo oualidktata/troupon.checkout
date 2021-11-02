@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Troupon.Core.Application.Ordering.Behaviors;
 using Troupon.Core.Application.Ordering.Events;
 
-namespace Troupon.Checkout.Api.DependencyInjectionExtensions
+namespace Troupon.Api.Ordering.DependencyInjectionExtensions
 {
   public static class AddMediatorExtensions
   {

@@ -1,7 +1,7 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Troupon.Checkout.Api.DependencyInjectionExtensions
+namespace Troupon.Api.Ordering.DependencyInjectionExtensions
 {
   public static class AddFluentValidatonExtensions
   {

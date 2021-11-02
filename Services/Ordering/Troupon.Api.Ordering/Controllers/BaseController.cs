@@ -4,7 +4,7 @@ using Infra.MediatR.Events;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Troupon.Checkout.Api.Controllers
+namespace Troupon.Api.Ordering.Controllers
 {  
   [ApiController]
   [ApplicationExceptionFilter]

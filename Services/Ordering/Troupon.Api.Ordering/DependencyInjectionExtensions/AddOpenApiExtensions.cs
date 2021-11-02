@@ -12,9 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Troupon.Checkout.Api.Authentication;
+using Troupon.Api.Ordering.Authentication;
 
-namespace Troupon.Checkout.Api.DependencyInjectionExtensions
+namespace Troupon.Api.Ordering.DependencyInjectionExtensions
 {
   public static class AddOpenApiExtensions
   {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Troupon.Checkout.Api.Controllers
+namespace Troupon.Api.Ordering.Controllers
 {
   public class ApplicationExceptionFilterAttribute : ExceptionFilterAttribute
   {

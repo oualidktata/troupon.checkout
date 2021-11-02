@@ -3,10 +3,10 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using Troupon.Checkout.Api.Conventions;
+using Troupon.Api.Ordering.Conventions;
 using Troupon.Core.Application.Ordering.DTOs;
 
-namespace Troupon.Checkout.Api.Controllers
+namespace Troupon.Api.Ordering.Controllers
 {
   [ApiController]
   [Route("api/v{version:apiVersion}/[controller]")]

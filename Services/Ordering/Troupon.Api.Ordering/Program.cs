@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace Troupon.Checkout.Api
+namespace Troupon.Api.Ordering
 {
   public class Program
   {

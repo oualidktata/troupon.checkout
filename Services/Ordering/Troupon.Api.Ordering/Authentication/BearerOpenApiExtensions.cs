@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Infra.oAuthService;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Troupon.Checkout.Api.Authentication
+namespace Troupon.Api.Ordering.Authentication
 {
   public static class BearerOpenApiExtensions
   {
