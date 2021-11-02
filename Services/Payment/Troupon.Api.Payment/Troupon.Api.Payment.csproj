@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>c2f11fbc-4a6a-4389-887d-0a04a409e063</UserSecretsId>
+    <UserSecretsId>f4df3f1e-7426-47f9-aea7-c8c182c5e683</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Model\Troupon.Shared.Model.csproj" />
+    <ProjectReference Include="..\..\Shared\Model\Troupon.Shared.Model.csproj" />
   </ItemGroup>
 
 </Project>
