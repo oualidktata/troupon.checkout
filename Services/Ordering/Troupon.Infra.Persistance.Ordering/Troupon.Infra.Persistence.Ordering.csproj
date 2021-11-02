@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
@@ -29,7 +29,7 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\Troupon.Checkout.Core.Domain\Troupon.Core.Domain.Ordering.csproj" />
+      <ProjectReference Include="..\Troupon.Core.Domain.Ordering\Troupon.Core.Domain.Ordering.csproj" />
     </ItemGroup>
 
 </Project>
