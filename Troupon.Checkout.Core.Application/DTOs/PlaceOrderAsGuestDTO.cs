@@ -2,7 +2,7 @@ using System;
 
 namespace Troupon.Checkout.Core.Application.DTOs
 {
-  public record PlaceOrderAsGuestDto
+  public class PlaceOrderAsGuestDto
   {
     public Guid DealId { get; init; }
     public string Email { get; init; } = "";
@@ -15,7 +15,7 @@ namespace Troupon.Checkout.Core.Application.DTOs
     public GiftDetails? GiftDetails { get; init; }
   }
 
-  public record GiftDetails
+  public class GiftDetails
   {
     public string ToEmail { get; init; }
     public string RecipientEmail { get; init; }
