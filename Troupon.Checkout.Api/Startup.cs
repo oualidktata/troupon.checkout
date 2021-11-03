@@ -1,65 +1,57 @@
 using System.Reflection;
-using Infra.oAuthService;
+using Infra.Api.DependencyInjection;
+using Infra.Authorization.Policies;
+using Infra.MediatR;
+using Infra.OAuth.Controllers.DependencyInjection;
+using Infra.OAuth.DependencyInjection;
 using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Troupon.Checkout.Api.DependencyInjectionExtensions;
+using Troupon.Catalog.Api.DependencyInjectionExtensions;
+using Troupon.Checkout.Api.ToMoveOrRemove;
+using Troupon.Checkout.Core.Application.Commands;
 using Troupon.Checkout.Infra.Persistence;
 
 namespace Troupon.Checkout.Api
 {
   public class Startup
   {
-    public Startup(
-      IConfiguration configuration,
-      IWebHostEnvironment hostEnvironment)
+    public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
-      HostEnvironment = hostEnvironment;
-      AuthSettings = new OAuthSettings();
     }
 
-    private IOAuthSettings AuthSettings { get; }
     private IConfiguration Configuration { get; }
-    private IWebHostEnvironment HostEnvironment { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(
-      IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services)
     {
-      Configuration.GetSection($"Auth:{Configuration.GetValue<string>("Auth:DefaultAuthProvider")}")
-        .Bind(AuthSettings);
-      services.AddScoped<IAuthService>(service => new AuthService(AuthSettings));
+      services.AddOAuthGenericAuthentication(Configuration).AddOAuthM2MAuthFlow();
 
-      services.AddAuthorization(
-        options =>
-        {
-          //options.AddPolicy("crm-api-backend", policy => policy.RequireClaim("crm-api-backend", "[crm-api-backend]"));
-        });
+      services.AddControllers().AddNewtonsoftJson();
+      services.AddOAuthController();
 
-      services.AddAutoMapper(
-        typeof(AutomapperProfile));
+      services.AddAuthorization(options =>
+      {
+        options.AddPolicy(TenantPolicy.Key, pb => pb.AddTenantPolicy("pwc"));
+        options.AddPolicy(AdminOnlyPolicy.Key, pb => pb.AddAdminOnlyPolicy());
+      });
 
-      services.AddMediator();
-      services.AddSqlServerPersistence<CheckoutDbContext>(
-        Configuration,
-        "mainDatabaseConnStr",
-        Assembly.GetExecutingAssembly()
-          .GetName()
-          .Name);
+      services.AddPolicyHandlers();
+
+      services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
+
+      services.AddMediator(typeof(PlaceOrderCommand).Assembly);
+      services.AddSqlServerPersistence<CheckoutDbContext>(Configuration, "mainDatabaseConnStr", Assembly.GetExecutingAssembly());
 
       services.AddEfReadRepository<CheckoutDbContext>();
       services.AddEfWriteRepository<CheckoutDbContext>();
-      //services.AddOpenApi(AuthSettings);
-      services.AddControllers();
-      services.AddOpenApi(Configuration);
+      services.AddOpenApi(Assembly.GetExecutingAssembly());
       services.AddMetrics();
       services.AddFluentValidaton();
       services.AddMemoryCache();
@@ -69,38 +61,32 @@ namespace Troupon.Checkout.Api
         o.Filters.Add(new ProducesAttribute("application/json", "application/xml"));
         o.Filters.Add(new ConsumesAttribute("application/json", "application/xml"));
       });
+
+      services.AddPwcApiBehaviour();
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(
-      IApplicationBuilder app,
-      IApiVersionDescriptionProvider apiVersionDescriptionProvider,
-      IWebHostEnvironment env,
-      IDbContextFactory<CheckoutDbContext> dbContextFactory)
+    public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider apiVersionDescriptionProvider, IDbContextFactory<CheckoutDbContext> dbContextFactory)
     {
+      var checkoutDbContext = dbContextFactory.CreateDbContext();
+      checkoutDbContext.Database.Migrate();
+
       app.UseExceptionHandler("/error");
 
       app.UseHttpsRedirection();
       app.UseSerilogRequestLogging();
 
       app.UseSwagger();
-      app.UseSwaggerUI(
-        c =>
-        {
-          foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
-          {
-            c.SwaggerEndpoint($"/swagger/{description.ApiVersion}/swagger.json", $"Troupon Checkout Specification{description.ApiVersion}");
-            c.RoutePrefix = string.Empty;
-          }
-        });
+      app.ConfigureSwaggerUI(apiVersionDescriptionProvider);
+
       app.UseRouting();
+
       app.UseAuthentication();
       app.UseAuthorization();
-      app.UseEndpoints(
-        endpoints =>
-        {
-          endpoints.MapControllers();
-        });
+
+      app.UseEndpoints(endpoints =>
+      {
+        endpoints.MapControllers();
+      });
     }
   }
 }
