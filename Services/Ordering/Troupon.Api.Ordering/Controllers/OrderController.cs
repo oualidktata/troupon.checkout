@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using Troupon.Api.Ordering.Conventions;
+using Troupon.Api.Ordering.Convention;
 using Troupon.Core.Application.Ordering.DTOs;
 
 namespace Troupon.Api.Ordering.Controllers
@@ -28,7 +28,7 @@ namespace Troupon.Api.Ordering.Controllers
     [HttpPost]
     public Task<OrderPlacedDto> Post([FromBody] PlaceOrderAsGuestDto model)
     {
-      return Task.FromResult(new OrderPlacedDto());      
+      return Task.FromResult(new OrderPlacedDto());
     }
   }
 }
