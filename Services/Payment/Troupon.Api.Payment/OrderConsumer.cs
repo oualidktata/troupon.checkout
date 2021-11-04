@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PaymentService
 {
-  internal class OrderConsumer : IConsumer<Order>
+  internal class OrderConsumer : IConsumer<OrderToPay>
   {
     private readonly ILogger<OrderConsumer> _logger;
 
@@ -15,10 +15,14 @@ namespace PaymentService
       _logger = logger;
     }
 
-    public async Task Consume(ConsumeContext<Order> context)
+    public async Task Consume(ConsumeContext<OrderToPay> context)
     {
       await Console.Out.WriteLineAsync(context.Message.Name);
       _logger.LogInformation($"Message coming: {context.Message.Name}");
+
+      //Process payment
+      //Once payment is successful, publish message to Notification Service
+
     }
   }
 }

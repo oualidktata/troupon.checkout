@@ -33,14 +33,6 @@ namespace PaymentService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentService", Version = "v1" });
             });
-            //services.AddMassTransit(config =>
-            //{
-            //  config.UsingRabbitMq((ctx, cfg) =>
-            //  {
-            //    cfg.Host("amqp://guest:guest@localhost:5672");
-            //  });
-            //});
-            //services.AddMassTransitHostedService();
             services.AddMassTransit(config =>
             {
               config.AddConsumer<OrderConsumer>();

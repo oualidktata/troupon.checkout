@@ -2,6 +2,7 @@ using System.Reflection;
 using Infra.oAuthService;
 using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -69,6 +70,15 @@ namespace Troupon.Api.Ordering
         o.Filters.Add(new ProducesAttribute("application/json", "application/xml"));
         o.Filters.Add(new ConsumesAttribute("application/json", "application/xml"));
       });
+
+      services.AddMassTransit(config =>
+      {
+        config.UsingRabbitMq((ctx, cfg) =>
+        {
+          cfg.Host("amqp://guest:guest@localhost:5672");
+        });
+      });
+      services.AddMassTransitHostedService();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

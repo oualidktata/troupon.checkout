@@ -83,6 +83,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Troupon.Api.Notification", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Troupon.Api.Payment", "Services\Payment\Troupon.Api.Payment\Troupon.Api.Payment.csproj", "{9979706A-8DD9-4CCB-8259-F11351205DAC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0E08501E-FDFD-4334-986E-F9756D22E564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Troupon.Core.Application.Payment", "Services\Payment\Troupon.Core.Application.Payment\Troupon.Core.Application.Payment\Troupon.Core.Application.Payment.csproj", "{D327591D-20FE-494F-A4E2-61B30B7D2C0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +185,10 @@ Global
 		{9979706A-8DD9-4CCB-8259-F11351205DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9979706A-8DD9-4CCB-8259-F11351205DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9979706A-8DD9-4CCB-8259-F11351205DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D327591D-20FE-494F-A4E2-61B30B7D2C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D327591D-20FE-494F-A4E2-61B30B7D2C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D327591D-20FE-494F-A4E2-61B30B7D2C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D327591D-20FE-494F-A4E2-61B30B7D2C0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -224,6 +232,8 @@ Global
 		{498BC2DF-84DD-481A-A761-C3F1537DE332} = {BCD6A3BC-D79E-4579-BD3E-A44CF99CD382}
 		{681D33EE-E312-4262-9F40-7F86EAA63191} = {7366379A-B647-409E-814A-DC75DCB58FA3}
 		{9979706A-8DD9-4CCB-8259-F11351205DAC} = {9D3EA32E-E81B-4894-BF75-B5524CCAB094}
+		{0E08501E-FDFD-4334-986E-F9756D22E564} = {4347B6AE-EE71-4BB5-A351-1A17404BB1A3}
+		{D327591D-20FE-494F-A4E2-61B30B7D2C0C} = {0E08501E-FDFD-4334-986E-F9756D22E564}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63F4EA02-B9BA-404B-9773-D9585A8D5964}
