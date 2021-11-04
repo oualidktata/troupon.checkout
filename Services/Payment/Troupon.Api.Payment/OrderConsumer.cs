@@ -1,10 +1,10 @@
-using MassTransit;
-using Microsoft.Extensions.Logging;
-using Model;
 using System;
 using System.Threading.Tasks;
+using MassTransit;
+using Microsoft.Extensions.Logging;
+using Troupon.Shared.Model;
 
-namespace PaymentService
+namespace Troupon.Api.Payment
 {
   internal class OrderConsumer : IConsumer<Order>
   {

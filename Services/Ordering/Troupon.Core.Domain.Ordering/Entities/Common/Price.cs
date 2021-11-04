@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Infra.DomainDrivenDesign.Base;
-using Troupon.DealManagement.Core.Domain.Entities.Common;
 
 namespace Troupon.Core.Domain.Ordering.Entities.Common
 {

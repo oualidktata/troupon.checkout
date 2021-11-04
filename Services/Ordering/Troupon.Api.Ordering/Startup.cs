@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Troupon.Api.Ordering.DependencyInjectionExtensions;
-using Troupon.Infra.Persistence.Ordering;
+using Troupon.Infrastructure.Ordering;
 
 namespace Troupon.Api.Ordering
 {
