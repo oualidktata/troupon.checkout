@@ -22,21 +22,28 @@ namespace Troupon.Core.Application.Payment.Handlers.Commands
       _publishEndpoint = publishEndpoint;
     }
 
-    public async Task Handle(
+    //public async Task Handle(
+    //  SendNotificationAfterPaymentCommand request,
+    //  CancellationToken cancellationToken)
+    //{
+    //  // Publish message to payment service through MassTransit
+    //  // Payment service will receive this message from its end.
+
+    //  await _publishEndpoint.Publish<OrderToPay>(new OrderToPay(request.Id));
+
+    //  //return await Task.FromResult(new OrderToPay(request.Id));
+    //}
+
+    Task<Task> IRequestHandler<SendNotificationAfterPaymentCommand, Task>.Handle(
       SendNotificationAfterPaymentCommand request,
       CancellationToken cancellationToken)
     {
-      // Publish message to payment service through MassTransit
-      // Payment service will receive this message from its end.
-
-      await _publishEndpoint.Publish<OrderToPay>(new OrderToPay(request.Id));
-
-      //return await Task.FromResult(new OrderToPay(request.Id));
-    }
-
-    Task<Unit> IRequestHandler<SendNotificationAfterPaymentCommand, Unit>.Handle(SendNotificationAfterPaymentCommand request, CancellationToken cancellationToken)
-    {
       throw new NotImplementedException();
     }
+
+    //async Task<Unit> IRequestHandler<SendNotificationAfterPaymentCommand, Unit>.Handle(SendNotificationAfterPaymentCommand request, CancellationToken cancellationToken)
+    //{
+    //  throw new NotImplementedException();
+    //}
   }
 }
