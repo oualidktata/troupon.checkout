@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Troupon.Infra.Persistence.Ordering;
+using Troupon.Infrastructure.Ordering;
 
 namespace Troupon.Api.Ordering.Migrations
 {
