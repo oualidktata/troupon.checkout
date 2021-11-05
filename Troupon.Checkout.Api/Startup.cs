@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.FeatureManagement;
 using Serilog;
 using Troupon.Catalog.Api.DependencyInjectionExtensions;
 using Troupon.Checkout.Api.ToMoveOrRemove;
@@ -32,20 +31,17 @@ namespace Troupon.Checkout.Api
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddFeatureManagement();
-
-      services.AddOAuthGenericAuthentication(Configuration).AddOAuthM2MAuthFlow();
-
       services.AddControllers().AddNewtonsoftJson();
-      services.AddOAuthController();
 
-      services.AddAuthorization(options =>
-      {
-        options.AddPolicy(TenantPolicy.Key, pb => pb.AddTenantPolicy("pwc"));
-        options.AddPolicy(AdminOnlyPolicy.Key, pb => pb.AddAdminOnlyPolicy());
-      });
-
-      services.AddPolicyHandlers();
+      // AUTH IS PARKED
+      // services.AddOAuthGenericAuthentication(Configuration).AddOAuthM2MAuthFlow();
+      // services.AddOAuthController();
+      // services.AddAuthorization(options =>
+      // {
+      //   options.AddPolicy(TenantPolicy.Key, pb => pb.AddTenantPolicy("pwc"));
+      //   options.AddPolicy(AdminOnlyPolicy.Key, pb => pb.AddAdminOnlyPolicy());
+      // });
+      // services.AddPolicyHandlers();
 
       services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
 
@@ -83,8 +79,9 @@ namespace Troupon.Checkout.Api
 
       app.UseRouting();
 
-      app.UseAuthentication();
-      app.UseAuthorization();
+      // AUTH IS PARKED
+      // app.UseAuthentication();
+      // app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
