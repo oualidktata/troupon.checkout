@@ -1,10 +1,11 @@
+using Infra.MediatR.Events;
 using MassTransit;
 using MediatR;
-using Model;
 using System.Threading;
 using System.Threading.Tasks;
 using Troupon.Core.Application.Ordering.Commands;
 using Troupon.Core.Application.Ordering.DTOs;
+using Troupon.Core.Application.Ordering.Events;
 
 namespace Troupon.Core.Application.Ordering.Handlers.Commands
 {
@@ -23,12 +24,14 @@ namespace Troupon.Core.Application.Ordering.Handlers.Commands
       PlaceOrderAsAGuestCommand request,
       CancellationToken cancellationToken)
     {
-      // Publish message to payment service through MassTransit
-      // Payment service will receive this message from its end.
+      //Convert orderPlaced with and event and raise it to be handled in OrderPlacedEventHandler
 
-      await _publishEndpoint.Publish<OrderToPay>(new OrderToPay(request.Id));
+      await DomainEvents.Raise(new GuestOrderPlacedEvent(request.Id));
 
-      return await Task.FromResult(new OrderPlacedDto());
+      return await Task.FromResult(new OrderPlacedDto
+      {
+        Id = request.Id,
+      });
     }
   }
 }

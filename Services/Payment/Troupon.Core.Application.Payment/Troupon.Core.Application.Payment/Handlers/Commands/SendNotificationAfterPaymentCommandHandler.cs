@@ -1,17 +1,14 @@
 using MassTransit;
 using MediatR;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Troupon.Core.Application.Payment.Commands;
+using Troupon.Core.Application.Payment.DTOs;
 
 namespace Troupon.Core.Application.Payment.Handlers.Commands
 {
-  class SendNotificationAfterPaymentCommandHandler : IRequestHandler<SendNotificationAfterPaymentCommand>
+  class SendNotificationAfterPaymentCommandHandler : IRequestHandler<SendNotificationAfterPaymentCommand, PaymentReceivedDto>
   {
     private readonly IPublishEndpoint _publishEndpoint;
 
@@ -22,28 +19,16 @@ namespace Troupon.Core.Application.Payment.Handlers.Commands
       _publishEndpoint = publishEndpoint;
     }
 
-    //public async Task Handle(
-    //  SendNotificationAfterPaymentCommand request,
-    //  CancellationToken cancellationToken)
-    //{
-    //  // Publish message to payment service through MassTransit
-    //  // Payment service will receive this message from its end.
-
-    //  await _publishEndpoint.Publish<OrderToPay>(new OrderToPay(request.Id));
-
-    //  //return await Task.FromResult(new OrderToPay(request.Id));
-    //}
-
-    Task<Task> IRequestHandler<SendNotificationAfterPaymentCommand, Task>.Handle(
+    public async Task<PaymentReceivedDto> Handle(
       SendNotificationAfterPaymentCommand request,
       CancellationToken cancellationToken)
     {
-      throw new NotImplementedException();
-    }
+      // Publish message to payment service through MassTransit
+      // Payment service will receive this message from its end.
 
-    //async Task<Unit> IRequestHandler<SendNotificationAfterPaymentCommand, Unit>.Handle(SendNotificationAfterPaymentCommand request, CancellationToken cancellationToken)
-    //{
-    //  throw new NotImplementedException();
-    //}
+      await _publishEndpoint.Publish<OrderToPay>(new OrderToPay(request.Id));
+
+      return await Task.FromResult(new PaymentReceivedDto());
+    }
   }
 }
