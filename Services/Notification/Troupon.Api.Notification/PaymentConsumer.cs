@@ -1,10 +1,10 @@
-using MassTransit;
-using Microsoft.Extensions.Logging;
-using Model;
 using System;
 using System.Threading.Tasks;
+using MassTransit;
+using Microsoft.Extensions.Logging;
+using Troupon.Shared.Model;
 
-namespace NotificationService
+namespace Troupon.Api.Notification
 {
   internal class PaymentConsumer : IConsumer<PaymentConfirmation>
   {

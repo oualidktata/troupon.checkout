@@ -4,7 +4,7 @@ using Troupon.Core.Domain.Ordering.Entities.Common;
 using Troupon.Core.Domain.Ordering.Entities.Customer;
 using Troupon.Core.Domain.Ordering.Entities.Order;
 
-namespace Troupon.Infra.Persistence.Ordering
+namespace Troupon.Infrastructure.Ordering
 {
   public class CheckoutDbContext : DbContext
   {

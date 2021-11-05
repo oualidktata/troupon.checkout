@@ -21,7 +21,7 @@
     <ProjectReference Include="..\..\..\Infrastructure\Infra.Persistence\Infra.Persistence\Infra.Persistence.csproj" />
     <ProjectReference Include="..\..\Shared\Model\Troupon.Shared.Model.csproj" />
     <ProjectReference Include="..\Troupon.Core.Domain.Ordering\Troupon.Core.Domain.Ordering.csproj" />
-    <ProjectReference Include="..\Troupon.Infra.Persistance.Ordering\Troupon.Infra.Persistence.Ordering.csproj" />
+    <ProjectReference Include="..\Troupon.Infra.Persistance.Ordering\Troupon.Infrastructure.Ordering.csproj" />
   </ItemGroup>
 
 </Project>
