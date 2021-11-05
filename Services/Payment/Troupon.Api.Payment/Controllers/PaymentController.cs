@@ -33,14 +33,6 @@ namespace Troupon.Api.Payment.Controllers
       return "value";
     }
 
-    // POST api/<PaymentController>
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] PaymentConfirmation paymentConfirmation)
-    {
-      await _publishEndpoint.Publish<PaymentConfirmation>(paymentConfirmation);
-      return Ok();
-    }
-
     // PUT api/<PaymentController>/5
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] string value)

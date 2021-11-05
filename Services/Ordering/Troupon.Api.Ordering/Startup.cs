@@ -71,14 +71,7 @@ namespace Troupon.Api.Ordering
         o.Filters.Add(new ConsumesAttribute("application/json", "application/xml"));
       });
 
-      services.AddMassTransit(config =>
-      {
-        config.UsingRabbitMq((ctx, cfg) =>
-        {
-          cfg.Host("amqp://guest:guest@localhost:5672");
-        });
-      });
-      services.AddMassTransitHostedService();
+      services.AddMassTransitConfiguration(Configuration);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

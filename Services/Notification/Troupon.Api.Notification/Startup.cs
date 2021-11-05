@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Troupon.Shared.Model;
 
 namespace Troupon.Api.Notification
 {
@@ -28,13 +29,14 @@ namespace Troupon.Api.Notification
             });
             services.AddMassTransit(config =>
             {
-              config.AddConsumer<PaymentConsumer>();
+              config.AddConsumer<NotificationConsumer>();
               config.UsingRabbitMq((ctx, cfg) =>
               {
+                //TODO add rabbitmq connection in configuration
                 cfg.Host("amqp://guest:guest@localhost:5672");
-                cfg.ReceiveEndpoint("notification-queue", c =>
+                cfg.ReceiveEndpoint(EventQueues.Notification, c =>
                 {
-                  c.ConfigureConsumer<PaymentConsumer>(ctx);
+                  c.ConfigureConsumer<NotificationConsumer>(ctx);
                 });
               });
             });
