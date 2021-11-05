@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Infrastructure\Infra.DomainDrivenDesign.Base\Infra.DomainDrivenDesign.Base.csproj" />
     <ProjectReference Include="..\..\..\Shared\Model\Troupon.Shared.Model.csproj" />
   </ItemGroup>
 

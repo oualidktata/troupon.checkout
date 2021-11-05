@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Infra.Common.Models;
@@ -27,7 +28,7 @@ namespace Troupon.Core.Application.Ordering.Handlers.Events
       // Publish message to payment service through MassTransit
       // Payment service will receive this message from its end.
 
-      await _publishEndpoint.Publish<IAuditable>(new GuestOrderPlacedEvent(notification.OrderId));
+      await _publishEndpoint.Publish<GuestOrderPlacedEvent>(new GuestOrderPlacedEvent(notification.OrderId));
     }
   }
 }
