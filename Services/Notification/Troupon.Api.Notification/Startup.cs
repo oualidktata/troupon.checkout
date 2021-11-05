@@ -1,19 +1,13 @@
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Troupon.Shared.Model;
 
-namespace NotificationService
+namespace Troupon.Api.Notification
 {
     public class Startup
     {
@@ -35,13 +29,14 @@ namespace NotificationService
             });
             services.AddMassTransit(config =>
             {
-              config.AddConsumer<PaymentConsumer>();
+              config.AddConsumer<NotificationConsumer>();
               config.UsingRabbitMq((ctx, cfg) =>
               {
+                //TODO add rabbitmq connection in configuration
                 cfg.Host("amqp://guest:guest@localhost:5672");
-                cfg.ReceiveEndpoint("notification-queue", c =>
+                cfg.ReceiveEndpoint(EventQueues.Notification, c =>
                 {
-                  c.ConfigureConsumer<PaymentConsumer>(ctx);
+                  c.ConfigureConsumer<NotificationConsumer>(ctx);
                 });
               });
             });

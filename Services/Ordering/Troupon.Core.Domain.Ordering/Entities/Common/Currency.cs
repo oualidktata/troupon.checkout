@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Infra.DomainDrivenDesign.Base;
 
-namespace Troupon.DealManagement.Core.Domain.Entities.Common
+namespace Troupon.Core.Domain.Ordering.Entities.Common
 {
   public class Currency : ValueObject
   {

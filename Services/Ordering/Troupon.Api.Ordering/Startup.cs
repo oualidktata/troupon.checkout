@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Troupon.Api.Ordering.DependencyInjectionExtensions;
-using Troupon.Infra.Persistence.Ordering;
+using Troupon.Infrastructure.Ordering;
 
 namespace Troupon.Api.Ordering
 {
@@ -34,7 +34,7 @@ namespace Troupon.Api.Ordering
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(
       IServiceCollection services)
-    {      
+    {
       Configuration.GetSection($"Auth:{Configuration.GetValue<string>("Auth:DefaultAuthProvider")}")
         .Bind(AuthSettings);
       services.AddScoped<IAuthService>(service => new AuthService(AuthSettings));
@@ -55,7 +55,7 @@ namespace Troupon.Api.Ordering
         Assembly.GetExecutingAssembly()
           .GetName()
           .Name);
-      
+
       services.AddEfReadRepository<CheckoutDbContext>();
       services.AddEfWriteRepository<CheckoutDbContext>();
       //services.AddOpenApi(AuthSettings);
@@ -63,7 +63,7 @@ namespace Troupon.Api.Ordering
       services.AddOpenApi(Configuration);
       services.AddMetrics();
       services.AddFluentValidaton();
-      services.AddMemoryCache();      
+      services.AddMemoryCache();
 
       services.Configure<MvcOptions>(o =>
       {
@@ -71,14 +71,7 @@ namespace Troupon.Api.Ordering
         o.Filters.Add(new ConsumesAttribute("application/json", "application/xml"));
       });
 
-      services.AddMassTransit(config =>
-      {
-        config.UsingRabbitMq((ctx, cfg) =>
-        {
-          cfg.Host("amqp://guest:guest@localhost:5672");
-        });
-      });
-      services.AddMassTransitHostedService();
+      services.AddMassTransitConfiguration(Configuration);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,13 +80,13 @@ namespace Troupon.Api.Ordering
       IApiVersionDescriptionProvider apiVersionDescriptionProvider,
       IWebHostEnvironment env,
       IDbContextFactory<CheckoutDbContext> dbContextFactory)
-    {      
+    {
       app.UseExceptionHandler("/error");
 
       app.UseHttpsRedirection();
       app.UseSerilogRequestLogging();
-     
-      app.UseSwagger();      
+
+      app.UseSwagger();
       app.UseSwaggerUI(
         c =>
         {
@@ -102,8 +95,6 @@ namespace Troupon.Api.Ordering
             c.SwaggerEndpoint($"/swagger/{description.ApiVersion}/swagger.json", $"Troupon Checkout Specification{description.ApiVersion}");
             c.RoutePrefix = string.Empty;
           }
-
-          c.RoutePrefix = string.Empty;
         });
       app.UseRouting();
       app.UseAuthentication();

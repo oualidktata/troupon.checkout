@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MassTransit;
+using Troupon.Api.Shipment.DependencyInjectionExtensions;
 
 namespace Troupon.Api.Shipment
 {
@@ -32,6 +34,7 @@ namespace Troupon.Api.Shipment
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Troupon.Api.Shipment", Version = "v1" });
             });
+            services.AddMassTransitConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

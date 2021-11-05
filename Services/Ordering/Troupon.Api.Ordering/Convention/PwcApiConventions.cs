@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 // NOTE: This is a copy and paste from the convention defined in the Catalog service.
 // If we stick with this approach, both classes should be moved to a independent nuget package so we can centralize a general convention
-namespace Troupon.Api.Ordering.Conventions
+namespace Troupon.Api.Ordering.Convention
 {
   /// <summary>
   /// PwcApiConventions are based on Microsoft.AspNetCore.Mvc.DefaultApiConventions.
