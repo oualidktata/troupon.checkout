@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Troupon.Core.Application.Ordering.Commands;
 using Troupon.Core.Application.Ordering.DTOs;
 using Troupon.Core.Application.Ordering.Events;
+using Troupon.Shared.Model.Contracts;
 
 namespace Troupon.Core.Application.Ordering.Handlers.Commands
 {

@@ -31,22 +31,7 @@ namespace Troupon.Api.Ordering.Controllers
     [HttpPost]
     public async Task<ActionResult<OrderPlacedDto>> PostAsync([FromBody] PlaceOrderAsAGuestCommand model)
     {
-      try
-      {
-        var result = await Mediator.Send(model);
-
-        return CreatedAtAction(
-          nameof(PostAsync),
-          new { id = result.Id },
-          result);
-      }
-      catch (Exception exception)
-      {
-        return await Task.FromResult(
-          StatusCode(
-            StatusCodes.Status500InternalServerError,
-            exception));
-      }
+      return Ok(await Mediator.Send(model));
     }
   }
 }

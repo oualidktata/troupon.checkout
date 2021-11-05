@@ -24,7 +24,7 @@ namespace Troupon.Core.Application.Shipment.Consumers
 
       // Send message to notification service
       _logger.LogInformation("Sending shipment started notification message");
-      var notificationEndpoint = await context.GetSendEndpoint(new Uri(EventQueues.Notification));
+      var notificationEndpoint = await context.GetSendEndpoint(EventQueues.NotificationUri);
       await notificationEndpoint.Send(new NotificationMessage
       {
         Content = "Shipment started"
@@ -32,7 +32,7 @@ namespace Troupon.Core.Application.Shipment.Consumers
 
       // Send Order Execution Approved event
       _logger.LogInformation("Sending order execution approved");
-      var executionStartEndpoint = await context.GetSendEndpoint(new Uri(EventQueues.Notification));
+      var executionStartEndpoint = await context.GetSendEndpoint(EventQueues.NotificationUri);
       await executionStartEndpoint.Send(new OrderExecutionStartedEvent());
     }
   }

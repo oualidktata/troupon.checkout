@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Troupon.Shared.Model;
 
 namespace Troupon.Api.Payment
 {
@@ -32,7 +33,7 @@ namespace Troupon.Api.Payment
               config.UsingRabbitMq((ctx, cfg) =>
               {
                 cfg.Host("amqp://guest:guest@localhost:5672");
-                cfg.ReceiveEndpoint("payment-queue", c =>
+                cfg.ReceiveEndpoint(EventQueues.GuestOrderPlacedEvent, c =>
                 {
                   c.ConfigureConsumer<OrderConsumer>(ctx);
                 });

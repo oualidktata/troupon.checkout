@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Troupon.Shared.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,13 +13,6 @@ namespace Troupon.Api.Payment.Controllers
   [ApiController]
   public class PaymentController : ControllerBase
   {
-    private readonly IPublishEndpoint _publishEndpoint;
-
-    public PaymentController(IPublishEndpoint publishEndpoint)
-    {
-      _publishEndpoint = publishEndpoint;
-    }
-
     // GET: api/<PaymentController>
     [HttpGet]
     public IEnumerable<string> Get()
@@ -30,7 +24,7 @@ namespace Troupon.Api.Payment.Controllers
     [HttpGet("{id}")]
     public string Get(int id)
     {
-      return "value";
+      return string.Empty;
     }
 
     // PUT api/<PaymentController>/5

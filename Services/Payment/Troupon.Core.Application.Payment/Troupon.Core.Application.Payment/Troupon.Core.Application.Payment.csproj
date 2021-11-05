@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\..\Shared\Model\Troupon.Shared.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events" />
+  </ItemGroup>
+
 </Project>

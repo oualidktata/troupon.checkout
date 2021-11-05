@@ -4,11 +4,11 @@ using System;
 using System.Threading.Tasks;
 using Troupon.Api.Payment.Events;
 using Troupon.Shared.Model;
-using Troupon.Core.Application.Payment.Events;
+using Troupon.Shared.Model.Contracts;
 
 namespace Troupon.Api.Payment
 {
-  internal class OrderConsumer : IConsumer<GuestOrderPlacedEvent>
+  public class OrderConsumer : IConsumer<GuestOrderPlacedEvent>
   {
     private readonly ILogger<OrderConsumer> _logger;
 
@@ -20,20 +20,16 @@ namespace Troupon.Api.Payment
     public async Task Consume(ConsumeContext<GuestOrderPlacedEvent> context)
     {
       // await Console.Out.WriteLineAsync(context.Message.CreationDate.ToString());
-      // _logger.LogInformation($"Message coming: {context.Message.CreationDate}");
-
-      //Process payment
-      //Once payment is successful, publish message to Notification Service
+      _logger.LogInformation($"Message coming: {context.Message.CreationDate}");
 
       //Send approved message to Notification Service
-
       _logger.LogInformation("Sending notification message");
-      var notificationEndpoint = await context.GetSendEndpoint(new Uri(EventQueues.Notification));
+      var notificationEndpoint = await context.GetSendEndpoint(EventQueues.NotificationUri);
       await notificationEndpoint.Send(new NotificationMessage { Content = "Payment successful" });
 
       //Send approved order event to Shipping Service
       _logger.LogInformation("Sending approved order event");
-      var approvedOrderEndpoint = await context.GetSendEndpoint(new Uri(EventQueues.ApprovedOrder));
+      var approvedOrderEndpoint = await context.GetSendEndpoint(EventQueues.ApprovedOrderUri);
       await approvedOrderEndpoint.Send(new ApprovedOrderEvent { OrderId = Guid.NewGuid() });
     }
   }

@@ -5,20 +5,22 @@ using Infra.Common.Models;
 using MassTransit;
 using MediatR;
 using Troupon.Core.Application.Ordering.Events;
+using Troupon.Shared.Model;
+using Troupon.Shared.Model.Contracts;
 
 namespace Troupon.Core.Application.Ordering.Handlers.Events
 {
   public class GuestOrderPlacedEventHandler : INotificationHandler<GuestOrderPlacedEvent>
   {
     private readonly IMediator _mediator;
-    private readonly IPublishEndpoint _publishEndpoint;
+    private readonly ISendEndpointProvider _sendEndpointProvider;
 
     public GuestOrderPlacedEventHandler(
       IMediator mediator,
-      IPublishEndpoint publishEndpoint)
+      ISendEndpointProvider sendEndpointProvider)
     {
       _mediator = mediator;
-      _publishEndpoint = publishEndpoint;
+      _sendEndpointProvider = sendEndpointProvider;
     }
 
     public async Task Handle(
@@ -28,7 +30,15 @@ namespace Troupon.Core.Application.Ordering.Handlers.Events
       // Publish message to payment service through MassTransit
       // Payment service will receive this message from its end.
 
-      await _publishEndpoint.Publish<GuestOrderPlacedEvent>(new GuestOrderPlacedEvent(notification.OrderId));
+      try
+      {
+        var guestOrderPlacedEndpoint = await _sendEndpointProvider.GetSendEndpoint(EventQueues.GuestOrderPlacedEventUri);
+        await guestOrderPlacedEndpoint.Send(new GuestOrderPlacedEvent(notification.OrderId), cancellationToken);
+      }
+      catch(Exception ex)
+      {
+        Console.WriteLine(ex.Message);
+      }
     }
   }
 }

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PaymentService": {
+    "Troupon.Api.Payment": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
