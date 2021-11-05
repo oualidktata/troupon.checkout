@@ -2,10 +2,9 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using MassTransit;
-using Microsoft.Extensions.Logging;
 using Troupon.Api.Payment.Events;
 using Troupon.Shared.Model;
+using Troupon.Core.Application.Payment.Events;
 
 namespace Troupon.Api.Payment
 {
