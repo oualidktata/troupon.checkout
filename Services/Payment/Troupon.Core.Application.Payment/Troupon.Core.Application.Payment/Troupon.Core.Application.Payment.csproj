@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Infrastructure\Infra.DomainDrivenDesign.Base\Infra.DomainDrivenDesign.Base.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Contracts\Troupon.Shared.Contracts.csproj" />
     <ProjectReference Include="..\..\..\Shared\Model\Troupon.Shared.Contracts.csproj" />
   </ItemGroup>
 
