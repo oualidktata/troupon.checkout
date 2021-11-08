@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using Troupon.Shared.Model;
+using Troupon.Shared.Contracts;
 
 namespace Troupon.Api.Notification
 {

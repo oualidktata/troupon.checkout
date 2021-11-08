@@ -78,9 +78,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9D3EA32E-E81
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F5AF2D3B-A272-4414-8794-C5604617AD72}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{BCD6A3BC-D79E-4579-BD3E-A44CF99CD382}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{BCD6A3BC-D79E-4579-BD3E-A44CF99CD382}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Troupon.Shared.Model", "Services\Shared\Model\Troupon.Shared.Model.csproj", "{498BC2DF-84DD-481A-A761-C3F1537DE332}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Troupon.Shared.Contracts", "Services\Shared\Model\Troupon.Shared.Contracts.csproj", "{498BC2DF-84DD-481A-A761-C3F1537DE332}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Troupon.Api.Notification", "Services\Notification\Troupon.Api.Notification\Troupon.Api.Notification.csproj", "{681D33EE-E312-4262-9F40-7F86EAA63191}"
 EndProject

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Troupon.Shared.Model
+namespace Troupon.Shared.Contracts
 {
   public static class EventQueues
   {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using Troupon.Core.Application.Shipment.Events;
-using Troupon.Shared.Model;
+using Troupon.Shared.Contracts;
+using Troupon.Shared.Contracts.Events;
 
 namespace Troupon.Core.Application.Shipment.Consumers
 {

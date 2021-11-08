@@ -1,12 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Infra.Common.Models;
 using MassTransit;
 using MediatR;
-using Troupon.Core.Application.Ordering.Events;
-using Troupon.Shared.Model;
-using Troupon.Shared.Model.Contracts;
+using Troupon.Shared.Contracts;
+using Troupon.Shared.Contracts.Events;
 
 namespace Troupon.Core.Application.Ordering.Handlers.Events
 {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Troupon.Core.Application.Shipment.Consumers;
-using Troupon.Shared.Model;
+using Troupon.Shared.Contracts;
 
 namespace Troupon.Api.Shipment.DependencyInjectionExtensions
 {

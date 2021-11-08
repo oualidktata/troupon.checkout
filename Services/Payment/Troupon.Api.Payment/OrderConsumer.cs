@@ -2,9 +2,8 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using Troupon.Api.Payment.Events;
-using Troupon.Shared.Model;
-using Troupon.Shared.Model.Contracts;
+using Troupon.Shared.Contracts;
+using Troupon.Shared.Contracts.Events;
 
 namespace Troupon.Api.Payment
 {

@@ -1,4 +1,4 @@
-﻿namespace Troupon.Shared.Model
+﻿namespace Troupon.Shared.Contracts
 {
   public class NotificationMessage
   {
