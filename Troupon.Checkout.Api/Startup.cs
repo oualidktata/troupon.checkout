@@ -1,9 +1,6 @@
 using System.Reflection;
 using Infra.Api.DependencyInjection;
-using Infra.Authorization.Policies;
 using Infra.MediatR;
-using Infra.OAuth.Controllers.DependencyInjection;
-using Infra.OAuth.DependencyInjection;
 using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -32,16 +29,6 @@ namespace Troupon.Checkout.Api
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllers().AddNewtonsoftJson();
-
-      // AUTH IS PARKED
-      // services.AddOAuthGenericAuthentication(Configuration).AddOAuthM2MAuthFlow();
-      // services.AddOAuthController();
-      // services.AddAuthorization(options =>
-      // {
-      //   options.AddPolicy(TenantPolicy.Key, pb => pb.AddTenantPolicy("pwc"));
-      //   options.AddPolicy(AdminOnlyPolicy.Key, pb => pb.AddAdminOnlyPolicy());
-      // });
-      // services.AddPolicyHandlers();
 
       services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
 
@@ -78,10 +65,6 @@ namespace Troupon.Checkout.Api
       app.ConfigureSwaggerUI(apiVersionDescriptionProvider);
 
       app.UseRouting();
-
-      // AUTH IS PARKED
-      // app.UseAuthentication();
-      // app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
