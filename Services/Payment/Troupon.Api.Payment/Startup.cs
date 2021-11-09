@@ -33,7 +33,7 @@ namespace Troupon.Api.Payment
               config.UsingRabbitMq((ctx, cfg) =>
               {
                 cfg.Host("amqp://guest:guest@localhost:5672");
-                cfg.ReceiveEndpoint(EventQueues.GuestOrderPlacedEvent, c =>
+                cfg.ReceiveEndpoint(EventQueues.OrderSubmittedEvent, c =>
                 {
                   c.ConfigureConsumer<OrderConsumer>(ctx);
                 });

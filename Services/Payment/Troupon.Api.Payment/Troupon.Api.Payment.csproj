@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Infrastructure\Infra.Common.Models\Infra.Common.Models.csproj" />
     <ProjectReference Include="..\..\Shared\Contracts\Troupon.Shared.Contracts.csproj" />
-    <ProjectReference Include="..\..\Shared\Model\Troupon.Shared.Contracts.csproj" />
     <ProjectReference Include="..\Troupon.Core.Application.Payment\Troupon.Core.Application.Payment\Troupon.Core.Application.Payment.csproj" />
   </ItemGroup>
 

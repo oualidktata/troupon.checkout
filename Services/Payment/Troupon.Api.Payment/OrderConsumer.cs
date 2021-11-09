@@ -7,7 +7,7 @@ using Troupon.Shared.Contracts.Events;
 
 namespace Troupon.Api.Payment
 {
-  public class OrderConsumer : IConsumer<GuestOrderPlacedEvent>
+  public class OrderConsumer : IConsumer<OrderSubmittedEvent>
   {
     private readonly ILogger<OrderConsumer> _logger;
 
@@ -16,7 +16,7 @@ namespace Troupon.Api.Payment
       _logger = logger;
     }
 
-    public async Task Consume(ConsumeContext<GuestOrderPlacedEvent> context)
+    public async Task Consume(ConsumeContext<OrderSubmittedEvent> context)
     {
       // await Console.Out.WriteLineAsync(context.Message.CreationDate.ToString());
       _logger.LogInformation($"Message coming: {context.Message.CreationDate}");
