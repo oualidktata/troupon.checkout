@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using Infra.Api;
+using Infra.Api.Conventions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +10,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using Troupon.Api.Ordering.Convention;
 using Troupon.Core.Application.Ordering.Commands;
 using Troupon.Core.Application.Ordering.DTOs;
+using Troupon.Checkout.Core.Application.DTOs;
 
 namespace Troupon.Api.Ordering.Controllers
 {
@@ -15,7 +18,7 @@ namespace Troupon.Api.Ordering.Controllers
   [Route("api/v{version:apiVersion}/[controller]")]
   [ApiVersion("1.0")]
   [ApiConventionType(typeof(PwcApiConventions))]
-  public class OrderController : BaseController
+  public class OrderController : PwcBaseController
   {
     public OrderController(
       IMediator mediator,
