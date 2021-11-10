@@ -5,6 +5,7 @@ using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ using Troupon.Catalog.Api.DependencyInjectionExtensions;
 using Troupon.Checkout.Api.ToMoveOrRemove;
 using Troupon.Checkout.Core.Application.Commands;
 using Troupon.Checkout.Infra.Persistence;
+using Troupon.Core.Application.Ordering.Commands;
 
 namespace Troupon.Api.Ordering
 {
