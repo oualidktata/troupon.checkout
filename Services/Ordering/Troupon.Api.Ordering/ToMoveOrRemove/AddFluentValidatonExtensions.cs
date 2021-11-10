@@ -1,11 +1,8 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Troupon.Api.Ordering;
 
-<<<<<<< HEAD:Services/Ordering/Troupon.Api.Ordering/DependencyInjectionExtensions/AddFluentValidatonExtensions.cs
-namespace Troupon.Api.Ordering.DependencyInjectionExtensions
-=======
 namespace Troupon.Checkout.Api.ToMoveOrRemove
->>>>>>> dev:Services/Ordering/Troupon.Api.Ordering/ToMoveOrRemove/AddFluentValidatonExtensions.cs
 {
   public static class AddFluentValidatonExtensions
   {

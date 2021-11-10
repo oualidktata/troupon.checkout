@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
 using AutoMapper;
+using Infra.Api;
+using Infra.Api.Conventions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Troupon.Api.Ordering.Convention;
+using Swashbuckle.AspNetCore.Annotations;
 using Troupon.Core.Application.Ordering.Commands;
 using Troupon.Core.Application.Ordering.DTOs;
 

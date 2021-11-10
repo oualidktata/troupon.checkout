@@ -1,9 +1,7 @@
 using System.Reflection;
 using Infra.Api.DependencyInjection;
-using Infra.MediatR;
 using Infra.Persistence.EntityFramework.Extensions;
 using Infra.Persistence.SqlServer.Extensions;
-using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +14,6 @@ using Troupon.Api.Ordering.DependencyInjectionExtensions;
 using Troupon.Infrastructure.Ordering;
 using Troupon.Catalog.Api.DependencyInjectionExtensions;
 using Troupon.Checkout.Api.ToMoveOrRemove;
-using Troupon.Checkout.Core.Application.Commands;
-using Troupon.Checkout.Infra.Persistence;
-using Troupon.Core.Application.Ordering.Commands;
 
 namespace Troupon.Api.Ordering
 {
@@ -36,8 +31,6 @@ namespace Troupon.Api.Ordering
       services.AddControllers().AddNewtonsoftJson();
 
       services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
-
-      services.AddMediator(typeof(PlaceOrderCommand).Assembly);
       services.AddSqlServerPersistence<CheckoutDbContext>(Configuration, "mainDatabaseConnStr", Assembly.GetExecutingAssembly());
 
       services.AddEfReadRepository<CheckoutDbContext>();
