@@ -17,13 +17,13 @@ namespace Troupon.Core.Application.Ordering.Handlers.Events
     }
 
     public async Task Handle(
-      GuestOrderPlacedEvent notification,
+      GuestOrderPlacedEvent @event,
       CancellationToken cancellationToken)
     {
       //Trigger order submission to payment service
 
       await _mediator.Send(
-        new SubmitOrderProducer(notification.OrderId),
+        new SubmitOrderProducer(@event.OrderId),
         cancellationToken);
     }
   }

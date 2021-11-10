@@ -134,7 +134,7 @@ namespace Troupon.Api.Ordering.DependencyInjectionExtensions
     {
       setup.SwaggerDoc(description.GroupName, new OpenApiInfo
       {
-        Title = $"Troupon.Checkout Api Specification {description.ApiVersion}",
+        Title = "Troupon.Api.Ordering",
         Description = "Api specification",
         Version = description.ApiVersion.ToString(),
         Contact = new OpenApiContact()

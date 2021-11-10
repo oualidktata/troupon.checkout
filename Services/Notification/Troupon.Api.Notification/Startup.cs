@@ -25,7 +25,7 @@ namespace Troupon.Api.Notification
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotificationService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Troupon.Api.Notification", Version = "v1" });
             });
             services.AddMassTransit(config =>
             {

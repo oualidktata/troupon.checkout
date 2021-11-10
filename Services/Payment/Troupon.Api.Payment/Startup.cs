@@ -25,7 +25,7 @@ namespace Troupon.Api.Payment
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Troupon.Api.Payment", Version = "v1"});
             });
             services.AddMassTransit(config =>
             {
